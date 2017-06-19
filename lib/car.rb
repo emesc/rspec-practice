@@ -4,16 +4,17 @@ class Car
   attr_writer :doors
 
   def initialize(options={})
-    self.make = options[:make] || 'Volvo'
-    self.year = (options[:year] || 2007).to_i
-    self.color = options[:color] || 'unknown'
+    @make = options[:make] || 'Volvo'
+    @year = (options[:year] || 2007).to_i
+    @color = options[:color] || 'unknown'
+    @wheels = 4
   end
 
-  def self.colors
+  def colors
     ['blue', 'black', 'red', 'green']
   end
 
   def full_name
-    "#{self.year.to_s} #{self.make} (#{self.color})"
+    "#{year.to_s} #{make} (#{color})"
   end
 end
