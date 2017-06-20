@@ -121,4 +121,13 @@ describe "Expectation Matchers" do
       expect(hash).not_to include({ 'a' => 1, 'c' => 3 })
     end
   end
+
+  describe "other useful matchers" do
+    it "matches strings with a regex" do
+      # This matcher is a good way to 'spot check' strings
+      string = "The order has been received."
+
+      expect(string).to match(/order(.)+received/)
+    end
+  end
 end
