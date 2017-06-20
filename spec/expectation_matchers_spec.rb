@@ -91,4 +91,34 @@ describe "Expectation Matchers" do
       expect(5..10).to cover(9)
     end
   end
+
+  describe "collection matchers" do
+    it "matches arrays" do
+      array = [1, 2, 3]
+
+      expect(array).to include(3)
+      expect(array).to include(1, 3)
+
+      expect(array).to start_with(1)
+      expect(array).to end_with(3)
+
+      expect(array).to match_array([3, 2, 1])
+      expect(array).not_to match_array([1, 2])
+
+      expect(array).to contain_exactly(3, 2, 1)   # similar to match array
+      expect(array).not_to contain_exactly(3)     # but use individual arguments
+    end
+
+    it "matches hashes" do
+      hash = { a: 1, b: 2, c: 3 }
+
+      expect(hash).to include(:a)
+      expect(hash).to include(a: 1)
+
+      expect(hash).to include(a: 1, c: 3)
+      expect(hash).to include({ a: 1, c: 3 })
+
+      expect(hash).not_to include({ 'a' => 1, 'c' => 3 })
+    end
+  end
 end
