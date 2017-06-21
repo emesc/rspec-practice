@@ -3,3 +3,4 @@
 --no-profile
 --no-fail-fast
 --order define
+--require spec_helper

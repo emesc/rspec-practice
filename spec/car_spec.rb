@@ -3,20 +3,18 @@ require 'car'
 describe "Car" do
   describe 'attributes' do
     it "allows reading and writing for :make" do
-      skip "Debugging a problem"
       car = Car.new
       car.make = 'Test'
       expect(car.make).to eq 'Test'
     end
 
-    xit "allows reading and writing for :year" do
+    it "allows reading and writing for :year" do
       car = Car.new
       car.year = 1999
       expect(car.year).to eq 1999
     end
 
     it "allows reading and writing for :color" do
-      pending "This will fail"
       car = Car.new
       car.color = 'foo'
       expect(car.color).to eq 'foo'
