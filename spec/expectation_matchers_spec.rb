@@ -248,4 +248,45 @@ describe "Expectation Matchers" do
       expect { warn('problem') }.to output(/problem/).to_stderr
     end
   end
+
+  describe "compound expectations" do
+    it "matches using: and, or, &, |" do
+      expect([1, 2, 3, 4]).to start_with(1).and end_with(4)
+      expect([1, 2, 3, 4]).to start_with(1) & include(2)
+      expect(10 * 10).to be_odd.or be > 50
+      array = ['hello', 'goodbye'].shuffle
+      expect(array.first).to eq('hello') | eq('goodbye')
+    end
+  end
+
+  describe "composing matchers" do
+    it "matches all collection elements using a matcher" do
+      array = [1, 2, 3]
+      expect(array).to all( be < 5 )
+    end
+
+    it "matches by sending matchers as arguments to matchers" do
+      string = "hello"
+      expect { string = "goodbye" }.to change { string }.from( match(/ll/) ).to( match(/oo/) )
+
+      hash = { a: 1, b: 2, c: 3 }
+      expect(hash).to include(a: be_odd, b: be_even, c: be_odd)
+      expect(hash).to include(a: be > 0, b: be_within(2).of(4))
+    end
+
+    it "matches using noun-phrase aliases for matchers" do
+      fruits = ['apple', 'banana', 'cherry']
+      expect(fruits).to start_with( start_with('a') ) &
+        include( a_string_matching(/a.a.a/) ) &
+        end_with( a_string_ending_with('y') )
+
+      array = [1, 2, 3, 4]
+      expect(array).to start_with( be <= 2 ) | 
+        end_with( be_within(1).of(5) )
+
+      array = [1, 2, 3, 4]
+      expect(array).to start_with( a_value <= 2 ) | 
+        end_with( a_value_within(1).of(5) )
+    end
+  end
 end
