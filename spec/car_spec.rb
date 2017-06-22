@@ -1,8 +1,7 @@
 require 'car'
 
-describe "Car" do
+describe Car do
   describe 'attributes' do
-    subject { Car.new }
 
     it "allows reading and writing for :make" do
       subject.make = 'Test'
