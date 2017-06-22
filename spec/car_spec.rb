@@ -1,26 +1,25 @@
 require 'car'
 
-describe "Car" do
+describe Car do
   describe 'attributes' do
-    let(:car) { Car.new }
 
     it "allows reading and writing for :make" do
-      car.make = 'Test'
-      expect(car.make).to eq 'Test'
+      subject.make = 'Test'
+      expect(subject.make).to eq 'Test'
     end
 
     it "allows reading and writing for :year" do
-      car.year = 1999
-      expect(car.year).to eq 1999
+      subject.year = 1999
+      expect(subject.year).to eq 1999
     end
 
     it "allows reading and writing for :color" do
-      car.color = 'foo'
-      expect(car.color).to eq 'foo'
+      subject.color = 'foo'
+      expect(subject.color).to eq 'foo'
     end
 
     it "allows reading for :wheels" do
-      expect(car.wheels).to eq 4
+      expect(subject.wheels).to eq 4
     end
 
     it "allows writing for :doors"
