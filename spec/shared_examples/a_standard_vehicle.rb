@@ -1,7 +1,7 @@
 shared_examples_for('a standard vehicle') do
   describe 'attributes' do
     it "allows reading and writing for :make" do
-      suject.make = 'Test'
+      subject.make = 'Test'
       expect(subject.make).to eq 'Test'
     end
 
