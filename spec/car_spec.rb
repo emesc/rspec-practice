@@ -1,4 +1,5 @@
 require 'car'
+require 'shared_examples/a_standard_vehicle'
 
 describe Car do
   it_behaves_like('a standard vehicle')
